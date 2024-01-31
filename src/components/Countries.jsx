@@ -2,11 +2,12 @@ import Header from "./Header";
 import { useParams } from 'react-router-dom';
 import data from '../database/data.json';
 import { NavLink } from 'react-router-dom'; 
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 
 
 
-function Countries() {
+function Countries(darkMode) {
     const { countryName } = useParams();
 
     const selectedCountry = data.find((country) => country.name === countryName);
@@ -14,33 +15,36 @@ function Countries() {
 
   return (
     <>
-    <div>
+    <div className={`countries ${darkMode ? 'dark' : ''}`}>
       <div className="shadow-md py-2">
-      <Header/>
+      <Header darkMode={darkMode} />
       </div>
-      <div className="mt-10 ml-24 ">
-                <NavLink to="/">
-                    <button className="px-10 py-2 shadow-sm shadow-gray-600 text-xs rounded-md">Back</button>
-                </NavLink>      
+      <div className="mt-10 ml-10">
+      <NavLink to="/">
+  <button className="flex px-6 py-2 shadow-sm shadow-gray-400 text-gray-500 text-xs rounded-md items-center">
+    <IoIosArrowRoundBack  size={22} className="mr-2"/> Back
+  </button>
+</NavLink>   
                 </div>
-<div className="flex align-middle w-full mt-24">
-      <div className=" justify-between  align-middle w-1/2">
-        <img src={selectedCountry.flag} alt={selectedCountry.name} className="w-full h-3/5 mb-2" />
+<div className="flex  w-full mt-24">
+      <div className="flex items-center justify-center align-middle w-1/2">
+        <img src={selectedCountry.flag} alt={selectedCountry.name}     className="w-full h-auto mb-2 max-w-lg"/>
       </div>
       <div>
         <div>
-            <p className="font-bold text-2xl py-1 mt-10 mb-6">{selectedCountry.name}</p>
+            <p className="font-bold text-2xl py-1 pt-10 mb-6">{selectedCountry.name}</p>
         </div>
 
-        <div className="flex">
+        <div className="flex justify-between">
             <div className="w-1/2">
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Native Name:</span><span className='text-xs text-gray-500'> {selectedCountry.nativeName}</span></p>
+            <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Native Name:</span><span className='text-xs text-gray-500'> {selectedCountry.nativeName}</span></p>
                 <p><span className="font-semibold text-xs py-1 text-gray-700">Population:</span><span className='text-xs text-gray-500'> {selectedCountry.population}</span></p>
                 <p><span className="font-semibold text-xs py-1 text-gray-700">Sub Region:</span><span className='text-xs text-gray-500'> {selectedCountry.subregion}</span></p>
                 <p><span className="font-semibold text-xs py-1 text-gray-700">Region:</span><span className='text-xs text-gray-500'> {selectedCountry.region}</span></p>
                 <p><span className="font-semibold text-xs py-1 text-gray-700">Capital:</span><span className='text-xs text-gray-500'> {selectedCountry.capital}</span></p>
             </div>
-            <div className="w-1/2">
+
+            <div className="ml-20 w-1/2">
             <p><span className="font-semibold text-xs py-1 text-gray-700">Top Level Domain:</span><span className='text-xs text-gray-500'> {selectedCountry.topLevelDomain}</span></p>
             <p><span className="font-semibold text-xs py-1 text-gray-700">Currencies:</span><span className='text-xs text-gray-500'> {selectedCountry.currencies[0].code}</span></p>
             <p>
@@ -59,28 +63,7 @@ function Countries() {
 
       <div>
 
- 
-{/* <p>
-    <span className="font-semibold text-xs py-1 text-gray-700">Border Countries:</span>
-    <span className='text-xs text-gray-500'>
-        {selectedCountry.borders.map((border, index) => {
-            // Encontrar o país correspondente ao código de fronteira
-            const borderCountry = data.find(country => country.alpha3Code === border);
-            // Verificar se o país foi encontrado
-            if (borderCountry) {
-                // Renderizar o nome do país
-                return (
-                    <span key={index}>
-                        {borderCountry.name}
-                        {index < selectedCountry.borders.length - 1 && ', '}
-                    </span>
-                );
-            } else {
-                return null;
-            }
-        })}
-    </span>
-</p> */}
+
       </div>
       </div>
 </div> 
