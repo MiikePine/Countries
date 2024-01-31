@@ -1,9 +1,7 @@
 
 
 import { IoMoonOutline } from 'react-icons/io5';
-import PropTypes from 'prop-types'; // Importe PropTypes
-// import { useState } from 'react';
-
+import PropTypes from 'prop-types'; 
 
 
 
@@ -11,16 +9,12 @@ import PropTypes from 'prop-types'; // Importe PropTypes
 
 function Header({darkMode, toggleDarkMode}) {
 
-    // const [darkMode, setDarkMode] = useState(false);
 
-    // const toggleDarkMode = () => {
-    //   setDarkMode(!darkMode);
-    // };
 
 
   return (
     <div className={` ${darkMode ? 'bg-[#2b3945]' : 'bg-white'}`}>
-    <div className={`flex mx-20 ${darkMode ? 'bg-[#2b3945]' : 'bg-white'} my-5 justify-between`}>
+    <div className={`flex mx-20 ${darkMode ? 'bg-[#2b3945]' : 'bg-white'} py-5 justify-between`}>
       <div>
       <p className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-[#2b3945]'}`}>Where in the world?</p>
         </div>
