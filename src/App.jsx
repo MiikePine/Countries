@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className={darkMode ? 'dark' : ''}>
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Header className={`${darkMode ? 'text-white dark:bg-[#202c37]' : 'text-gray-600 bg-gray-100'}`} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Routes>
           <Route path="/" element={<Dashboard darkMode={darkMode} />} />
           <Route path="/countries/:countryName" element={<Countries darkMode={darkMode} />} />

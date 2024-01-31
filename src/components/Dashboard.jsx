@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import Header from "./Header";
 import { Listbox } from '@headlessui/react'
 import data from '../database/data.json';
 import { MdOutlineSearch } from "react-icons/md";
 import { IoMoonOutline } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavLink } from 'react-router-dom'; 
-
+import Header from './Header';
 
 
 
@@ -48,16 +47,17 @@ function Dashboard({ darkMode, toggleDarkMode }) {
   
 
   return (
-    <div className={`dashboard ${darkMode ? 'dark:bg-elements' : ''}`}>
   
-      <div className={`h-screen bg-gray-50 ${darkMode ? 'dark:bg-[#202c37]' : ''}`}>
+      <div className={`h-screen  ${darkMode ? 'text-white dark:bg-[#202c37]' : 'text-gray-600 bg-gray-100'}`}>
+                {/* <Header className={`${darkMode ? 'text-white dark:bg-[#202c37]' : 'text-gray-600 bg-gray-100'}`} darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> */}
+
         <div className='flex justify-between mx-20 pt-10'>
         <div className={`flex items-center px-4 py-2 h-12 w-72 border text-xs text-gray-200 shadow-md rounded-sm focus:outline-none ${darkMode ? 'dark:bg-[#2b3945]' : 'bg-white'}`}>
           <MdOutlineSearch size={22} className="text-gray-400 mr-2" />
           <input 
     type="text" 
     placeholder="Search for a country..."  
-    className={`border text-xs h-full w-full text-gray-600 rounded-sm border-none bg-white focus:outline-none  ${darkMode ? 'dark:bg-[#2b3945]' : 'bg-white'}`} 
+    className={`border text-xs h-full w-full rounded-sm border-none focus:outline-none ${darkMode ? 'text-white dark:bg-[#2b3945]' : 'text-gray-600 bg-white'}`}
     value={searchTerm}
     onChange={(e) => setSearchTerm(e.target.value)}
 />
@@ -67,13 +67,11 @@ function Dashboard({ darkMode, toggleDarkMode }) {
         <div>
         
         <Listbox value={selectedContinent} onChange={handleContinentChange}>
-        
-
-        <Listbox.Button className="border px-4 py-4 w-44 bg-white rounded-sm text-gray-600 text-xs shadow-md focus:outline-none flex justify-between">
+        <Listbox.Button className={`border px-4 py-4 w-44 rounded-sm text-xs shadow-md focus:outline-none flex justify-between ${darkMode ? 'text-white dark:bg-[#2b3945]' : 'text-gray-600 bg-white'}`}>
     {selectedContinent.name}
     <MdKeyboardArrowDown size={18}/>
   </Listbox.Button>          
-  <Listbox.Options className="absolute z-10 mt-2 py-4 px-4 w-44 bg-white text-gray-600 text-xs border rounded-sm shadow-md cursor-pointer">
+  <Listbox.Options className={`absolute z-10 mt-2 py-4 px-4 w-44 bg-white text-gray-600 text-xs border rounded-sm shadow-md cursor-pointer ${darkMode ? 'text-white dark:bg-[#2b3945]' : 'text-gray-600 bg-white'}`}>
             {continent.map((continent) => (
               <Listbox.Option
               className="py-1"
@@ -94,23 +92,24 @@ function Dashboard({ darkMode, toggleDarkMode }) {
         </div>
 
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-6 gap-16 mt-10 mx-20">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-6 gap-16 mt-10 mx-20">
         {filteredCountries.map((country, index) => (
             <NavLink key={index} to={`/countries/${country.name}`}>
-<div className={`rounded-lg shadow-md cursor-pointer h-full ${darkMode ? 'bg-[#2b3945]' : 'bg-white'}`}>
+            <div className={`rounded-lg shadow-md cursor-pointer h-full ${darkMode ? 'bg-[#2b3945]' : 'bg-white'}`}>
               <img src={country.flag} alt={country.name} className="w-full h-40 object-cover mb-2" />
               <div className='mx-6 mt-6 mb-10 '>
-                <p className="font-bold text-md py-1">{country.name}</p>
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Population:</span><span className='text-xs text-gray-500'> {country.population}</span></p>
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Region:</span><span className='text-xs text-gray-500'> {country.region}</span></p>
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Capital:</span><span className='text-xs text-gray-500'> {country.capital}</span></p>
+                <p className={`font-bold text-md py-1 ${darkMode ? 'text-white' : 'text-[#2b3945]'}`}>{country.name}</p>
+                <p><span className={`font-semibold text-xs py-1 text-gray-700 ${darkMode ? 'text-white' : 'text-[#2b3945]'}`}>Population:</span><span className='text-xs text-gray-500'> {country.population}</span></p>
+                <p><span className={`font-semibold text-xs py-1 text-gray-700 ${darkMode ? 'text-white' : 'text-[#2b3945]'}`}>Region:</span><span className='text-xs text-gray-500'> {country.region}</span></p>
+                <p><span className={`font-semibold text-xs py-1 text-gray-700 ${darkMode ? 'text-white' : 'text-[#2b3945]'}`}>Capital:</span><span className='text-xs text-gray-500'> {country.capital}</span></p>
               </div>
             </div>
           </NavLink>
         ))}
 </div>
       </div>
-  </div>
+
 
 
   );

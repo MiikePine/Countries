@@ -15,10 +15,8 @@ function Countries(darkMode) {
 
   return (
     <>
-    <div className={`countries ${darkMode ? 'dark' : ''}`}>
-      <div className="shadow-md py-2">
-      <Header darkMode={darkMode} />
-      </div>
+    <div className={`h-screen countries ${darkMode ? 'text-white dark:bg-[#202c37]' : 'text-gray-600 bg-gray-100'}`}>
+      
       <div className="mt-10 ml-10">
       <NavLink to="/">
   <button className="flex px-6 py-2 shadow-sm shadow-gray-400 text-gray-500 text-xs rounded-md items-center">
@@ -38,17 +36,17 @@ function Countries(darkMode) {
         <div className="flex justify-between">
             <div className="w-1/2">
             <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Native Name:</span><span className='text-xs text-gray-500'> {selectedCountry.nativeName}</span></p>
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Population:</span><span className='text-xs text-gray-500'> {selectedCountry.population}</span></p>
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Sub Region:</span><span className='text-xs text-gray-500'> {selectedCountry.subregion}</span></p>
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Region:</span><span className='text-xs text-gray-500'> {selectedCountry.region}</span></p>
-                <p><span className="font-semibold text-xs py-1 text-gray-700">Capital:</span><span className='text-xs text-gray-500'> {selectedCountry.capital}</span></p>
+                <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Population:</span><span className='text-xs text-gray-500'> {selectedCountry.population}</span></p>
+                <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Sub Region:</span><span className='text-xs text-gray-500'> {selectedCountry.subregion}</span></p>
+                <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Region:</span><span className='text-xs text-gray-500'> {selectedCountry.region}</span></p>
+                <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Capital:</span><span className='text-xs text-gray-500'> {selectedCountry.capital}</span></p>
             </div>
 
             <div className="ml-20 w-1/2">
-            <p><span className="font-semibold text-xs py-1 text-gray-700">Top Level Domain:</span><span className='text-xs text-gray-500'> {selectedCountry.topLevelDomain}</span></p>
-            <p><span className="font-semibold text-xs py-1 text-gray-700">Currencies:</span><span className='text-xs text-gray-500'> {selectedCountry.currencies[0].code}</span></p>
+            <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Top Level Domain:</span><span className='text-xs text-gray-500'> {selectedCountry.topLevelDomain}</span></p>
+            <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Currencies:</span><span className='text-xs text-gray-500'> {selectedCountry.currencies[0].code}</span></p>
             <p>
-    <span className="font-semibold text-xs py-1 text-gray-700">Languages:</span>
+    <span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Languages: </span>
     <span className='text-xs text-gray-500'>
         {selectedCountry.languages && selectedCountry.languages.map((language, index) => (
             <span key={index}>
