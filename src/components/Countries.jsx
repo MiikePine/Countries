@@ -24,8 +24,8 @@ function Countries(darkMode, toggleDarkMode) {
   </button>
 </NavLink>   
                 </div>
-<div className="flex  w-full mt-24">
-      <div className="flex items-center justify-center align-middle w-1/2">
+<div className="md:flex  w-full mt-24">
+      <div className=" flex items-center justify-center align-middle w-1/2">
         <img src={selectedCountry.flag} alt={selectedCountry.name}     className="w-full h-auto mb-2 max-w-lg"/>
       </div>
       <div>
@@ -33,7 +33,7 @@ function Countries(darkMode, toggleDarkMode) {
             <p className="font-bold text-2xl py-1 pt-10 mb-6">{selectedCountry.name}</p>
         </div>
 
-        <div className="flex justify-between">
+        <div className="mx-10 md:mx-0 md:flex justify-between">
             <div className="w-1/2">
             <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Native Name:</span><span className='text-xs text-gray-500'> {selectedCountry.nativeName}</span></p>
                 <p><span className={`font-semibold text-xs text-gray-700  py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Population:</span><span className='text-xs text-gray-500'> {selectedCountry.population}</span></p>
@@ -42,7 +42,7 @@ function Countries(darkMode, toggleDarkMode) {
                 <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Capital:</span><span className='text-xs text-gray-500'> {selectedCountry.capital}</span></p>
             </div>
 
-            <div className="ml-20 w-1/2">
+            <div className=" md:mx-0 md:ml-20 w-1/2">
             <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Top Level Domain:</span><span className='text-xs text-gray-500'> {selectedCountry.topLevelDomain}</span></p>
             <p><span className={`font-semibold text-xs py-1 ${darkMode ? 'text-white' : 'text-gray-700'}`}>Currencies:</span><span className='text-xs text-gray-500'> {selectedCountry.currencies[0].code}</span></p>
             <p>
