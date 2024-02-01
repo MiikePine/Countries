@@ -15,11 +15,14 @@ const continent = [
 function List({ darkMode, handleContinentChange }) {
   const [selectedContinent, setSelectedContinent] = useState({ name: 'Filter by Continent' });
 
-
+  const handleLocalContinentChange = (selectedContinent) => {
+    setSelectedContinent(selectedContinent);
+    handleContinentChange(selectedContinent); // Chama a função do componente pai
+  };
   
     return (
         <div>
-        <Listbox value={selectedContinent} onChange={handleContinentChange}>
+      <Listbox value={selectedContinent} onChange={handleLocalContinentChange}>
         <Listbox.Button className={`border px-4 py-4 w-44 rounded-sm text-xs shadow-md focus:outline-none flex justify-between ${darkMode ? 'text-white dark:bg-[#2b3945]' : 'text-gray-600 bg-white'}`}>
     {selectedContinent.name}
     <MdKeyboardArrowDown size={18}/>

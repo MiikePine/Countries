@@ -46,13 +46,16 @@ function Dashboard({ darkMode }) {
   return (
   
       <div className={`  ${darkMode ? 'text-white dark:bg-[#202c37]' : 'text-gray-600 bg-gray-100'}`}>
-        <div className=' md:flex justify-between mx-20 pt-10'>
-            <Search darkMode={darkMode} onSearchTermChange={handleSearchTermChange} />
-            
-            <List darkMode={darkMode} handleContinentChange={handleContinentChange} />
+        <div className=' md:flex  justify-between mx-2 md:mx-20 pt-10'>
+        <div className="mb-8"> {/* Adicionando espaço abaixo da barra de pesquisa */}
+             <Search darkMode={darkMode} onSearchTermChange={handleSearchTermChange} />
+            </div>
+            <div>
+              <List darkMode={darkMode} handleContinentChange={handleContinentChange} />
+            </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-6 gap-16 mt-10 mx-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-6 gap-16 mt-10 mx-10 md:mx-20">
         {filteredCountries.map((country, index) => (
             <NavLink key={index} to={`/countries/${country.name}`}>
             <div className={`rounded-lg shadow-md cursor-pointer h-full ${darkMode ? 'bg-[#2b3945]' : 'bg-white'}`}>
